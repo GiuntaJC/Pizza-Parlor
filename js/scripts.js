@@ -4,6 +4,11 @@ function orderList() {
   this.itemId = 0;
 }
 
+orderList.prototype.assignId = function() {
+  this.itemId +=1;
+  return this.currentId;
+}
+
 function pizza(crust, sauce, toppings, size) {
   this.crust = crust;
   this.sauce = sauce;
