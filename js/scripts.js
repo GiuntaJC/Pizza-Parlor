@@ -6,6 +6,13 @@ function pizza(crust, sauce, toppings, size) {
   this.size = size;
 }
 
+function crustType(crustSize, isGlutenFree) {
+	this.crustSize = crustSize;
+  this.isGlutenFree = isGlutenFree;
+}
+
+let pizzaToppings = []; // Move to local scope later
+
 // Front-end
 $(document).ready(function() {
 
