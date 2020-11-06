@@ -26,6 +26,9 @@ This site was built for an independent Friday project at _Epicodus_. It uses obj
 Test: getPizzaPrice should check the choices selected, and return a final price based on them.
 Expect: getPizzaPrice(pizzaOrder).toEqual($12.99);
 
+Test: orderList.prototype.assignId should assign a new id to every item in an order
+Expect: item1.toEqual(1), item2.toEqual(2), item3.toEqual(3)
+
 # Legal
 
 Copyright 2020 Joseph C Giunta
