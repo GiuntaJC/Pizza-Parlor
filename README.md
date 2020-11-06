@@ -23,6 +23,8 @@ This site was built for an independent Friday project at _Epicodus_. It uses obj
 * Visual Studio Code
 
 # Specs
+Test: getPizzaPrice should check the choices selected, and return a final price based on them.
+Expect: getPizzaPrice(pizzaOrder).toEqual($12.99);
 
 # Legal
 
