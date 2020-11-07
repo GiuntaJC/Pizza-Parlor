@@ -29,6 +29,9 @@ Expect: getPizzaPrice(pizzaOrder).toEqual($12.99);
 Test: orderList.prototype.assignId should assign a new id to every item in an order
 Expect: item1.toEqual(1), item2.toEqual(2), item3.toEqual(3)
 
+Test: getSizePrice should return a price based on the size of the pizza
+Expect: pizza(small).toEqual(8.50); pizza(large).toEqual(14.50);
+
 # Legal
 
 Copyright 2020 Joseph C Giunta

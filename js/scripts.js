@@ -14,29 +14,26 @@ orderList.prototype.addPizza = function(pie) {
   pie.itemId = this.assignId();
   this.pizzas.push(pie);
 }
-/*
+
 orderList.prototype.getPizzaPrice = function() {
   const sizePrice = [["small", 8.50], ["medium", 11.50], ["large",14.50]]; // Base Price
-  const crustSizePrice = [["thin", .80], ["regular", 1], ["Deep-Dish", 2]]; // multiplier
+  const crustSizePrice = [["thin", .80], ["regular", 1], ["Deep-Dish", 1.5]]; // multiplier
   const crustGlutenPrice = [[false, 1], [true, 1.3]]; // multiplier
   const saucePrice = [["tomato", .50], ["white garlic", .75], ["alfredo", .80]]; // addition
   const toppingsPrice = [["peperoni", .75], ["mushroom", .85], ["diced tomato", .50], ["sausage", 1], ["basil", .50], ["pineapple", .60], ["canadian bacon", .70]]; // addition
 
-  const pizzaPrice = 0;
   this.pizzas.forEach(function(elem1) {
-    if(elem1 == sizePrice[0, 0]) {
-      pizzaPrice = sizePrice[0, 1];
+    if(elem1.size == sizePrice[0][0]) {
+      elem1.price = sizePrice[0][1];
+      return;
+    } else if(elem1.size == sizePrice[1][0]) {
+      elem1.price = sizePrice[1][1];
+      return;
+    } else if(elem1.size == sizePrice[2][0]) {
+      elem1.price = sizePrice[2][1];
       return;
     }
-  }); */
-/*
-  this.pizzas.forEach(elem1) {
-    sizePrice.forEach(i, elem1) {
-      if (elem1.size == [i,0]) {
-        elem1.price = [i,1]
-      }
-    }
-  } */
+  }); 
 }
 
 function pizza(size, crust, sauce, toppings) {
