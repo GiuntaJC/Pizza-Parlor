@@ -15,24 +15,24 @@ orderList.prototype.addPizza = function(pie) {
   this.pizzas.push(pie);
 }
 
+function getSizePrice(size) {
+  if(size == "small") {
+    return 8.50;
+  } else if(size == "medium") {
+    return 11.50;
+  } else if(size == "large") {
+    return 14.50;
+  }
+}
+
 orderList.prototype.getPizzaPrice = function() {
-  const sizePrice = [["small", 8.50], ["medium", 11.50], ["large",14.50]]; // Base Price
   const crustSizePrice = [["thin", .80], ["regular", 1], ["Deep-Dish", 1.5]]; // multiplier
   const crustGlutenPrice = [[false, 1], [true, 1.3]]; // multiplier
   const saucePrice = [["tomato", .50], ["white garlic", .75], ["alfredo", .80]]; // addition
   const toppingsPrice = [["peperoni", .75], ["mushroom", .85], ["diced tomato", .50], ["sausage", 1], ["basil", .50], ["pineapple", .60], ["canadian bacon", .70]]; // addition
 
-  this.pizzas.forEach(function(elem1) {
-    if(elem1.size == sizePrice[0][0]) {
-      elem1.price = sizePrice[0][1];
-      return;
-    } else if(elem1.size == sizePrice[1][0]) {
-      elem1.price = sizePrice[1][1];
-      return;
-    } else if(elem1.size == sizePrice[2][0]) {
-      elem1.price = sizePrice[2][1];
-      return;
-    }
+  this.pizzas.forEach(function(objIndex) {
+    objIndex.price = getSizePrice(objIndex.size);
   }); 
 }
 
