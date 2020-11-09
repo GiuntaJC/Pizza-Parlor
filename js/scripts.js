@@ -34,7 +34,7 @@ function getCrustPrice(price, crustSize, gluten) {
   } else if(crustSize == "deep-dish") {
     output = price * 1.5;
   }
-  if(gluten = true) {
+  if(gluten == true) {
     output = output * 1.3;
   }
   return output;
@@ -53,15 +53,16 @@ function getSaucePrice(price, sauce) {
 }
 
 function getToppingsPrice(price, toppings) {
-  const toppingsPrice = [["peperoni", .75], ["mushroom", .85], ["diced tomato", .50], ["sausage", 1], ["basil", .50], ["pineapple", .60], ["canadian bacon", .70]]; // addition
+  const toppingsPrice = [["pepperoni", .75], ["mushroom", .85], ["diced tomato", .50], ["sausage", 1], ["basil", .50], ["pineapple", .60], ["canadian bacon", .70]]; // addition
   output = 0;
-  toppings.forEach(elem1) {
-    toppingsPrice.forEach(elem2) {
+  toppings.forEach(function (elem1) {
+    toppingsPrice.forEach(function (elem2) {
       if(elem1 == elem2[0]) {
-        output = price + elem2[1];
+        output = output + elem2[1];
       }
-    }
-  }
+    });
+  });
+  output = price + output;
   return output;
 }
 
@@ -71,6 +72,7 @@ orderList.prototype.getPizzaPrice = function() {
     objIndex.price = getCrustPrice(objIndex.price, objIndex.crust.crustSize, objIndex.crust.isGlutenFree);
     objIndex.price = getSaucePrice(objIndex.price, objIndex.sauce);
     objIndex.price = getToppingsPrice(objIndex.price, objIndex.toppings);
+    objIndex.price = parseFloat(objIndex.price.toFixed(2));
   }); 
 }
 
