@@ -32,6 +32,9 @@ Expect: item1.toEqual(1), item2.toEqual(2), item3.toEqual(3)
 Test: getSizePrice should return a price based on the size of the pizza
 Expect: pizza(small).toEqual(8.50); pizza(large).toEqual(14.50);
 
+Test: getCrustPrize should multiply the price according to both the crust type and whether or not  it is gluten free, rounding to 2 decimals
+Expect: pizza[small, thin, true].toEqual(8.84);
+
 # Legal
 
 Copyright 2020 Joseph C Giunta
