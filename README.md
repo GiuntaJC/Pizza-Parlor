@@ -35,6 +35,12 @@ Expect: pizza(small).toEqual(8.50); pizza(large).toEqual(14.50);
 Test: getCrustPrize should multiply the price according to both the crust type and whether or not  it is gluten free, rounding to 2 decimals
 Expect: pizza[small, thin, true].toEqual(8.84);
 
+Test: getSaucePrice should add a fixed ammount to the price based on sauce type
+Expect: pizza.sauce("white garlic").toEqual(pizza.price + .75)
+
+Test: getToppingsPrice should add a fixed ammount to the price based on Toppings
+Expect: pizza.toppings["mushroom", "basil", "sausage"].toEqual(pizza.price + 2.35)
+
 # Legal
 
 Copyright 2020 Joseph C Giunta
