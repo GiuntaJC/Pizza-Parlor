@@ -2,17 +2,17 @@
 function orderList() {
   this.pizzas = [];
   this.totalPrice = 0;
-  this.itemId = 0;
 }
 
-orderList.prototype.assignId = function() {
-  this.itemId +=1;
-  return this.currentId;
-}
 
 orderList.prototype.addPizza = function(pie) {
-  pie.itemId = this.assignId();
   this.pizzas.push(pie);
+}
+
+orderList.prototype.getTotalPrice = function() {
+  this.pizzas.forEach((objIndex) => {
+    this.totalPrice += objIndex.price;
+  }); 
 }
 
 function getSizePrice(size) {
@@ -66,16 +66,6 @@ function getToppingsPrice(price, toppings) {
   return output;
 }
 
-orderList.prototype.getPizzaPrice = function() {
-  this.pizzas.forEach(function(objIndex) {
-    objIndex.price = getSizePrice(objIndex.size);
-    objIndex.price = getCrustPrice(objIndex.price, objIndex.crust.crustSize, objIndex.crust.isGlutenFree);
-    objIndex.price = getSaucePrice(objIndex.price, objIndex.sauce);
-    objIndex.price = getToppingsPrice(objIndex.price, objIndex.toppings);
-    objIndex.price = parseFloat(objIndex.price.toFixed(2));
-  }); 
-}
-
 function pizza(size, crust, sauce, toppings) {
   this.size = size;
   this.crust = crust;
@@ -84,24 +74,53 @@ function pizza(size, crust, sauce, toppings) {
   this.price = 0;
 }
 
+pizza.prototype.getPizzaPrice = function() {
+    this.price = getSizePrice(this.size);
+    this.price = getCrustPrice(this.price, this.crust.crustSize, this.crust.isGlutenFree);
+    this.price = getSaucePrice(this.price, this.sauce);
+    this.price = getToppingsPrice(this.price, this.toppings);
+    this.price = parseFloat(this.price.toFixed(2));
+}
+
 function crustType(crustSize, isGlutenFree) {
 	this.crustSize = crustSize;
   this.isGlutenFree = isGlutenFree;
 }
 
-let pizzaToppings = ["mushroom", "basil", "sausage"]; // Move to local scope later if possible
-let pizzaCrust = new crustType("thin", false);
-
-let order = new orderList();
-const pizza1 = new pizza("large", pizzaCrust, "alfredo", pizzaToppings);
-order.addPizza(pizza1);
-
-console.log(order.pizza1.crust);
-
-
-
-
 // Front-end
 $(document).ready(function() {
+  let order = new orderList();
+  $("#orderForm").submit(function(event) {
+    const inputSize = $('input[name="size"]:checked').val();
+    const inputCrustSize = $('input[name="crustType"]:checked').val();
+    const inputCrustGluten = document.getElementById("crustGluten").checked;
+    const inputSauce = $('input[name="sauceType"]:checked').val();
+    let inputToppings = []; 
+    $("input:checkbox[name=toppings]:checked").each(function(){
+      inputToppings.push($(this).val());
+    });
+    const inputCrust = new crustType(inputCrustSize, inputCrustGluten);
+    const Pizza = new pizza(inputSize, inputCrust, inputSauce, inputToppings);
+    
+    Pizza.getPizzaPrice();
+    order.addPizza(Pizza);
 
+    $('input[name="size"]').prop('checked', false);
+    $('input[name="crustType"]').prop('checked', false);
+    $('#crustGluten').prop('checked', false);
+    $('input[name="sauceType"]').prop('checked', false);
+    $("input:checkbox[name=toppings]:checked").each(function(){
+      $(this).prop('checked', false);
+    });
+    $("#wasAdded").show();
+
+    event.preventDefault();
+  });
+
+  $("input#finishOrder").click(function() {
+    order.getTotalPrice();
+    $("#finalOutputPrice").append(order.totalPrice);
+    $("#inputOrderForm").hide();
+    $("#finalOutput").show();
+  });
 });

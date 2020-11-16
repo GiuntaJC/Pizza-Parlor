@@ -41,6 +41,9 @@ Expect: pizza.sauce("white garlic").toEqual(pizza.price + .75)
 Test: getToppingsPrice should add a fixed ammount to the price based on Toppings
 Expect: pizza.toppings["mushroom", "basil", "sausage"].toEqual(pizza.price + 2.35)
 
+Test: getTotalPrice should add all pizza prices together into a total order price
+Expect: getTotalPrice.toEqual(price1 + price2 + price3);
+
 # Legal
 
 Copyright 2020 Joseph C Giunta

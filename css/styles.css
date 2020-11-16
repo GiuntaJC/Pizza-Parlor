@@ -1,0 +1,13 @@
+#finalOutput {
+  display: none;
+  font-weight: bold;
+}
+
+#wasAdded {
+  display: none;
+  font-weight: bold;
+}
+
+#finalOutputPrice {
+  color: red;
+}

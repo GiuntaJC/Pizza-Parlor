@@ -8,18 +8,61 @@
   <title>Pizza Parlor</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="inputOrderForm">
     <h1>Build your pizza!</h1>
     <form id="orderForm">
-      <h3><strong>Crust</strong></h3>
-      <label></label>
-      <input >
-      <label></label>
-      <input >
-      <label></label>
-      <input >
-    </form>
 
+      <h3>Size</h3>
+      <input type="radio" id="sizeSmall" name="size" value="small" required>
+      <label for="sizeSmall">Small ($8.50)</label><br>
+      <input type="radio" id="sizeMedium" name="size" value="medium">
+      <label for="sizeMedium">Medium ($11.50)</label><br>
+      <input type="radio" id="sizeLarge" name="size" value="large">
+      <label for="sizeLarge">Large ($14.50)</label><br>
+
+      <h3><strong>Crust</strong></h3>
+      <input type="radio" id="crustThin" name="crustType" value="thin" required>
+      <label for="crustThin">Thin (-%20)</label><br>
+      <input type="radio" id="crustRegular" name="crustType" value="regular">
+      <label for="crustRegular">Regular</label><br>
+      <input type="radio" id="crustThick" name="crustType" value="deep-dish">
+      <label for="crustThick">Deep Dish (+%50)</label><br>
+      <input type="checkbox" id="crustGluten" name="crustGluten" value="true">
+      <label for="crustGluten">Make gluten-free? (+%30)</label><br>
+      <br>
+
+      <h3>Sauce</h3>
+      <input type="radio" id="sauceRed" name="sauceType" value="tomato" required>
+      <label for="sauceRed">Classic Tomato (+$0.50)</label><br>
+      <input type="radio" id="sauceGarlic" name="sauceType" value="white garlic">
+      <label for="sauceGarlic">White Garlic (+$0.75)</label><br>
+      <input type="radio" id="sauceAlfredo" name="sauceType" value="alfredo">
+      <label for="sauceAlfredo">Alfredo (+$0.80)</label><br>
+
+      <h3>Toppings</h3>
+      <input type="checkbox" id="topPepperoni" name="toppings" value="pepperoni">
+      <label for="topPepperoni">Pepperoni (+$0.75)</label><br>
+      <input type="checkbox" id="topMushrooms" name="toppings" value="mushroom">
+      <label for="topMushrooms">Mushrooms (+$0.85)</label><br>
+      <input type="checkbox" id="topTomato" name="toppings" value="diced tomato">
+      <label for="topTomato">Diced Tomatoes (+$0.50)</label><br>
+      <input type="checkbox" id="topSausage" name="toppings" value="sausage">
+      <label for="topSausage">Sausage (+$1.00)</label><br>
+      <input type="checkbox" id="topBasil" name="toppings" value="basil">
+      <label for="topBasil">Basil leaves (+$0.50)</label><br>
+      <input type="checkbox" id="topPineapple" name="toppings" value="pineapple">
+      <label for="topPineapple">Pineapple (+$0.60)</label><br>
+      <input type="checkbox" id="topHam" name="toppings" value="canadian bacon">
+      <label for="topHam">Canadian Bacon (+$0.70)</label><br>
+
+      <br><input type="submit" id="addPizza" value="Add pizza to cart"><span id="wasAdded"> Added pizza to cart!</span>
+    </form>
+    <br><br><br>
+    <input type="button" id="finishOrder" class="btn btn-success" value="Checkout!">
+  </div>
+  <div class="container">
+    <br><br><br>
+  <p id="finalOutput">Your final price is: $<span id=finalOutputPrice></span></p>
   </div>
 </body>
 </html>
